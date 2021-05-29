@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo=header.vue the snapshot should be same 1`] = `
+<div class="wrapper">
+  <h3 class="header-logo">Todo</h3>
+  <div><input type="text" data-test="user-input" class="header-input"> <button class="submit-btn">Submit</button></div>
+</div>
+`;
