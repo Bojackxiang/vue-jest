@@ -5,7 +5,7 @@ describe('HelloWorld.vue', () => {
   it('Tdo list 能够正常渲染', () => {
     const wrapper = shallowMount(TodList)
 
-    expect(wrapper).not.toBe(null);
-    expect(wrapper).not.toBe(undefined);
+    expect(wrapper.exists()).toBe(true)
+    
   })
 })
