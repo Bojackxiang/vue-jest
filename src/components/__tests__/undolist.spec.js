@@ -1,9 +1,7 @@
 import { shallowMount, mount } from "@vue/test-utils";
 import UndoList from '../../components/UndoList.vue'
-import Todo from '../UndoList.vue'
-import Header from '../../components/Todo_header.vue'
-import { findAllElementsByClassName, findWrapperWithTag } from '../../utils/testUtils'
-
+import { findAllElementsByClassName } from '../../utils/testUtils'
+import TodoItem from '../Todo_item.vue'
 
 describe('Undo List component', () => {
   it('undo list should render successfully', () => {
@@ -36,39 +34,47 @@ describe('Undo List component', () => {
   it('should have correct length', () => {
     const wrapper = shallowMount(UndoList, {
       propsData: {
-        undoList: [1, 2, 3]
+        undoList: ['1', '2', '3']
       }
     });
     const todoItems = findAllElementsByClassName(wrapper, '.todo-item')
     expect(todoItems.length).toEqual(3)
   })
 
-  it('should have delete button when length is greater than 1', () => {
+  it('Should render same length todo item', () => {
     const wrapper = shallowMount(UndoList, {
       propsData: {
-        undoList: [1, 2, 3]
+        undoList: ['1', '2', '3']
       }
     });
-    const todoItems = findAllElementsByClassName(wrapper, '.delete-todo-btn')
-    expect(todoItems.length).toEqual(3)
+
+    const todoItem = wrapper.findAllComponents(TodoItem)
+    expect(todoItem.length).toEqual(3)
   })
+
 
   it('点击子组件删除钮的时候向外触发事件', () => {
-    const wrapper = shallowMount(UndoList, {
+    const wrapper = mount(UndoList, {
       propsData: {
-        undoList: [1]
+        undoList: ['1']
       }
     });
 
-    const deleteBtn = wrapper.find('.delete-todo-btn')
-    expect(deleteBtn).toBeTruthy();
-    // REVIEW <学习> 触发button 的点击时间
-    deleteBtn.trigger('click')
-    //  REVIEW <学习> 向外触发 delete 事件
-    console.log(wrapper.emitted().delete);
-    expect(wrapper.emitted().delete).toBeTruthy();
+    const todoItems = wrapper.findAllComponents(TodoItem)
+    expect(todoItems.length).toEqual(1)    
+    wrapper.vm.$emit('delete', 0, 'undo')
+
+    expect(wrapper.emitted('delete')).toBeTruthy()
+    
+
+
+
+    
+    
+    
+
 
   })
 
-  
+
 })

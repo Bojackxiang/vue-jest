@@ -3,6 +3,7 @@
     <ul>
       <li v-for="(todo, index) in undoList" :key="index" class="todo-item">
         <TodoItem
+          data-test='todo-item'
           :todoItem="todo"
           :id="index"
           @deleteTodo="deleteTodo"

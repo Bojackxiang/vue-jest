@@ -40,7 +40,7 @@ describe('HelloWorld.vue', () => {
     // REVIEW <学习> 获得父组件中的足组件
     const undoList = findWrapperWidthComponentName(wrapper, UndoList)
     // REVIEW <学习> 子组建触发父组件传递的方法
-    undoList.vm.$emit('delete', 0)
+    undoList.vm.$emit('delete', 0, 'undo')
     // REVIEW <学习> 获取 组件里面的 数据
     expect(wrapper.vm.$data.undoList.length).toEqual(1)
   })
@@ -66,6 +66,10 @@ describe('HelloWorld.vue', () => {
     await Vue.nextTick()
 
     expect(undoList.props('undoList')).toBeTruthy();
+  })
+
+  it('当点击了 添加 / 删除 / done 的时候， undo, todo, 应该要有相应的变化', () => {
+    
   })
 
 
