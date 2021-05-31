@@ -66,11 +66,6 @@ describe('HelloWorld.vue', () => {
     await Vue.nextTick()
 
     expect(undoList.props('undoList')).toBeTruthy();
-
-
-
-
-
   })
 
 
