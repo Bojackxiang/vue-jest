@@ -12,13 +12,13 @@ describe('Undo List component', () => {
   })
 
   it('undo list 穿进来的是一个孔数组', () => {
-    // REVIEW: component 接受参数
+    // REVIEW: <学习> component 接受参数
     const wrapper = shallowMount(UndoList, {
       propsData: {
         undoList: []
       }
     });
-    // REVIEW 获取 父组件 穿进来的 参数
+    // REVIEW <学习> 获取 父组件 穿进来的 参数
     const defaultUndoList = wrapper.props().undoList;
     expect(defaultUndoList.length).toBe(0)
   })
@@ -62,9 +62,9 @@ describe('Undo List component', () => {
 
     const deleteBtn = wrapper.find('.delete-todo-btn')
     expect(deleteBtn).toBeTruthy();
-    // REVIEW 触发button 的点击时间
+    // REVIEW <学习> 触发button 的点击时间
     deleteBtn.trigger('click')
-    //  REVIEW 向外触发 delete 事件
+    //  REVIEW <学习> 向外触发 delete 事件
     console.log(wrapper.emitted().delete);
     expect(wrapper.emitted().delete).toBeTruthy();
 

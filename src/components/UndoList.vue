@@ -2,28 +2,37 @@
   <div>
     <ul>
       <li v-for="(todo, index) in undoList" :key="index" class="todo-item">
-        <div>
-          <span>{{ todo }}</span>
-          <button class="delete-todo-btn" @click="deleteTodo(index)">
-            delete
-          </button>
-        </div>
+        <TodoItem
+          :todoItem="todo"
+          :id="index"
+          @deleteTodo="deleteTodo"
+          @done="done"
+        />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import TodoItem from "../components/Todo_item.vue";
 export default {
   name: "undo-list",
+  components: {
+    TodoItem,
+  },
   props: {
     undoList: Array,
     delete: Function,
+    listName: String
   },
   methods: {
     deleteTodo(todoIndex) {
-      // REVIEW VUE: 子组建 向 父组件 触发信息
-      this.$emit("delete", todoIndex);
+      // REVIEW <VUE>: 子组建 向 父组件 触发信息
+      // REVIEW <VUE> PROPS 里面的数据 也要 this 才能渠道
+      this.$emit("delete", todoIndex, this.listName);
+    },
+    done(index) {
+      this.$emit("doneTodo", index, this.listName);
     },
   },
 };

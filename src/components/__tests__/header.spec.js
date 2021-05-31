@@ -7,7 +7,7 @@ let wrapper = null;
 describe('Todo=header.vue', () => {
 
   it('Header should existed ', () => {
-    // REVIEW 生成 component
+    // REVIEW <学习> 生成 component
     const wrapper = shallowMount(Header);
     const result = wrapper.exists();
     expect(result).toBe(true);
@@ -15,7 +15,7 @@ describe('Todo=header.vue', () => {
 
   it('Header should include input box', () => {
     const wrapper = shallowMount(Header);
-    // REVIEW 根据 data-test 找 dom 节点
+    // REVIEW <学习> 根据 data-test 找 dom 节点
     const input_box = findWrapperWithTag(wrapper, "[data-test='user-input']")
     const result = input_box.exists()
     
@@ -24,7 +24,7 @@ describe('Todo=header.vue', () => {
 
   it('input value of input is empty string', () => {
     const wrapper = shallowMount(Header);
-    // REVIEW 获取 component 中的 data
+    // REVIEW <学习> 获取 component 中的 data
     const initialValue = wrapper.vm.$data.inputValue
     expect(initialValue).toEqual('')
   })
@@ -33,7 +33,7 @@ describe('Todo=header.vue', () => {
     const testStr = 'test string'
     const wrapper = shallowMount(Header);
     const input = findWrapperWithTag(wrapper, "[data-test='user-input']")
-    // REVIEW 给 input 组件赋值
+    // REVIEW <学习> 给 input 组件赋值
     input.setValue(testStr)
     const inputValue = wrapper.vm.$data.inputValue
     expect(testStr).toEqual(inputValue)
@@ -44,7 +44,7 @@ describe('Todo=header.vue', () => {
     const wrapper = shallowMount(Header);
     const input = findWrapperWithTag(wrapper, "[data-test='user-input']")
     input.setValue(testStr)
-    // REVIEW input 触发 事件
+    // REVIEW <学习> input 触发 事件
     input.trigger('keyup.enter')
 
     expect(wrapper.emitted().add).toBeFalsy()
@@ -58,7 +58,7 @@ describe('Todo=header.vue', () => {
     input.setValue(testStr)
     input.trigger('keyup.enter')
     // 这边 也不是很需要 真实存在一个 add 去emit
-    // REVIEW 子组件 触发 父类传捡来的组件
+    // REVIEW <学习> 子组件 触发 父类传捡来的组件
     expect(wrapper.emitted().add).toBeTruthy()
   })
 
@@ -74,7 +74,7 @@ describe('Todo=header.vue', () => {
 
   it('the snapshot should be same', () => {
     const wrapper = shallowMount(Header);
-    // REVIEW snapshot 测试
+    // REVIEW <学习> snapshot 测试
     expect(wrapper).toMatchSnapshot();
   })
 })
