@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.inputValue);
       if (this.inputValue) {
         this.$emit("add", this.inputValue);
         this.inputValue = "";

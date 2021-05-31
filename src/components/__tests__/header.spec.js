@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Header from '../Todo_header.vue'
+import {findWrapperWithTag} from '../../utils/testUtils'
 
 let wrapper = null;
 
@@ -15,7 +16,7 @@ describe('Todo=header.vue', () => {
   it('Header should include input box', () => {
     const wrapper = shallowMount(Header);
     // REVIEW 根据 data-test 找 dom 节点
-    const input_box = wrapper.find("[data-test='user-input']")
+    const input_box = findWrapperWithTag(wrapper, "[data-test='user-input']")
     const result = input_box.exists()
     
     expect(result).toBe(true)
@@ -31,7 +32,7 @@ describe('Todo=header.vue', () => {
   it('input value should update when input value update', () => {
     const testStr = 'test string'
     const wrapper = shallowMount(Header);
-    const input = wrapper.find("[data-test='user-input']")
+    const input = findWrapperWithTag(wrapper, "[data-test='user-input']")
     // REVIEW 给 input 组件赋值
     input.setValue(testStr)
     const inputValue = wrapper.vm.$data.inputValue
@@ -41,7 +42,7 @@ describe('Todo=header.vue', () => {
   it('input should do nothing when user hit enter when input value is ""', () => {
     const testStr = ''
     const wrapper = shallowMount(Header);
-    const input = wrapper.find("[data-test='user-input']")
+    const input = findWrapperWithTag(wrapper, "[data-test='user-input']")
     input.setValue(testStr)
     // REVIEW input 触发 事件
     input.trigger('keyup.enter')
