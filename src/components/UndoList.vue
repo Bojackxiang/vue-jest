@@ -3,11 +3,12 @@
     <ul>
       <li v-for="(todo, index) in undoList" :key="index" class="todo-item">
         <TodoItem
-          data-test='todo-item'
+          data-test="todo-item"
           :todoItem="todo"
           :id="index"
           @deleteTodo="deleteTodo"
           @done="done"
+          @updateTodo="updateTodo"
         />
       </li>
     </ul>
@@ -23,8 +24,9 @@ export default {
   },
   props: {
     undoList: Array,
+    listName: String,
     delete: Function,
-    listName: String
+    updateText: Function,
   },
   methods: {
     deleteTodo(todoIndex) {
@@ -35,7 +37,20 @@ export default {
     done(index) {
       this.$emit("doneTodo", index, this.listName);
     },
+    updateTodo(index, newText) {
+      this.$emit("updateText", index, newText, this.listName);
+    },
   },
+  data() {
+    return {
+      undoListData: this.undoList,
+    };
+  },
+  watch: {
+    undoListData: function(){
+      this.undoListData = undoList
+    }
+  }
 };
 </script>
 

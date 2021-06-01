@@ -1,8 +1,15 @@
 <template>
   <div class="item-wrapper">
-    {{ todoItem }}
+    <div>
+      <p>
+        {{ todoItem }}
+      </p>
+      <input type="text" v-model="todoItemText" @keyup.enter="updateText" />
+    </div>
+
     <button class="delete-btn" @click="deleteTodo(id)">delete</button>
     <button class="done-btn" @click="finishTodo(id)">Done</button>
+    <button class="edit-btn" @click="edit()">Edit</button>
   </div>
 </template>
 
@@ -11,6 +18,12 @@ export default {
   props: {
     todoItem: String,
     id: Number,
+    updateTodo: Function
+  },
+  data() {
+    return {
+      todoItemText: this.todoItem,
+    };
   },
   methods: {
     deleteTodo(index) {
@@ -18,6 +31,12 @@ export default {
     },
     finishTodo(index) {
       this.$emit("done", index);
+    },
+    edit() {
+      // console.log(index);
+    },
+    updateText() {
+      this.$emit('updateTodo', this.id, this.todoItemText)
     },
   },
 };
@@ -37,6 +56,15 @@ export default {
   margin: 10px;
 }
 .done-btn {
+  min-width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0;
+  background-color: cadetblue;
+  color: white;
+  margin: 10px;
+}
+.edit-btn {
   min-width: 80px;
   height: 40px;
   border-radius: 5px;
