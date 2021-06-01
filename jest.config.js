@@ -4,5 +4,7 @@ module.exports = {
     "**/__tests__/**/*.[jt]s?(x)"],
   testPathIgnorePatterns: [
     '\.eslintrc\.js'
-  ]
+  ],
+  collectCoverage: true,
+  collectCoverageFrom: ["**/*.{js,vue}"]
 }

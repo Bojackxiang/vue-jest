@@ -46,11 +46,7 @@ export default {
       undoListData: this.undoList,
     };
   },
-  watch: {
-    undoListData: function(){
-      this.undoListData = undoList
-    }
-  }
+  
 };
 </script>
 

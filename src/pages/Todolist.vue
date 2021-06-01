@@ -34,6 +34,13 @@ export default {
       finishedList: [],
     };
   },
+  watch: {
+    // REVIEW <VUE> 前面这个部分就像是 dependency
+    // REVIEW <VUE> 并且 这个 value 就是 dependency 的 value
+    undoList: function (val) {
+      console.log({ val });
+    },
+  },
   methods: {
     add(todo) {
       this.undoList = [...this.undoList, todo];

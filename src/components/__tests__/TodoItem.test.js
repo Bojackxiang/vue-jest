@@ -61,7 +61,7 @@ describe('Todo Item', () => {
     const inputBox = wrapper.find('.todo-input');
     const toggleBtn = wrapper.find('.edit-btn')
     toggleBtn.trigger('click')
-    expect(wrapper.vm.$data.showInput).toBeTruthy()
+    expect(wrapper.vm.showInput).toBeTruthy()
 
     Vue.nextTick()
 
@@ -85,7 +85,7 @@ describe('Todo Item', () => {
     const toggleBtn = wrapper.find('.edit-btn')
 
     toggleBtn.trigger('click')
-    expect(wrapper.vm.$data.showInput).toBeTruthy()
+    expect(wrapper.vm.showInput).toBeTruthy()
 
     inputBox.trigger('keyup.enter')
     expect(wrapper.emitted('updateTodo')).toBeTruthy()

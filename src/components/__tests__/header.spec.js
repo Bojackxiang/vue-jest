@@ -25,7 +25,7 @@ describe('Todo=header.vue', () => {
   it('input value of input is empty string', () => {
     const wrapper = shallowMount(Header);
     // REVIEW <学习> 获取 component 中的 data
-    const initialValue = wrapper.vm.$data.inputValue
+    const initialValue = wrapper.vm.inputValue
     expect(initialValue).toEqual('')
   })
 
@@ -35,7 +35,7 @@ describe('Todo=header.vue', () => {
     const input = findWrapperWithTag(wrapper, "[data-test='user-input']")
     // REVIEW <学习> 给 input 组件赋值
     input.setValue(testStr)
-    const inputValue = wrapper.vm.$data.inputValue
+    const inputValue = wrapper.vm.inputValue
     expect(testStr).toEqual(inputValue)
   })
 
@@ -68,7 +68,7 @@ describe('Todo=header.vue', () => {
     const input = wrapper.find("[data-test='user-input']")
     input.setValue(testStr);
     input.trigger('keyup.enter')
-    const inputValue = wrapper.vm.$data.inputValue 
+    const inputValue = wrapper.vm.inputValue 
     expect(inputValue).toEqual('');
   })
 

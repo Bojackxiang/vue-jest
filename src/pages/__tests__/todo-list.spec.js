@@ -17,7 +17,7 @@ describe('HelloWorld.vue', () => {
   })
 
   it('undo list should be empty', () => {
-    const undoList = wrapper.vm.$data.undoList;
+    const undoList = wrapper.vm.undoList;
     expect(undoList).toEqual([])
   })
 
@@ -28,7 +28,7 @@ describe('HelloWorld.vue', () => {
     // REVIEW <学习> 父组件 触发子组建
     header.vm.$emit('add', 'testing todo')
     // ! 这边最重要的 emit 一定是 父类穿进去的名字
-    const data = wrapper.vm.$data.undoList;
+    const data = wrapper.vm.undoList;
     expect(data.length).toBe(1)
   })
 
@@ -36,13 +36,14 @@ describe('HelloWorld.vue', () => {
     // REVIEW <学习> 获得父组件
     const wrapper = shallowMount(TodList)
     // REVIEW  <学习> 更改父组件的里面的 data
-    wrapper.vm.$data.undoList = [1, 2]
+    wrapper.vm.undoList = [1, 2]
     // REVIEW <学习> 获得父组件中的足组件
     const undoList = findWrapperWidthComponentName(wrapper, UndoList)
     // REVIEW <学习> 子组建触发父组件传递的方法
     undoList.vm.$emit('delete', 0, 'undo')
     // REVIEW <学习> 获取 组件里面的 数据
-    expect(wrapper.vm.$data.undoList.length).toEqual(1)
+    // REVIEW <学习> 不要用 vm.$data。propertyName, 而是使用 vm.propertyName
+    expect(wrapper.vm.undoList.length).toEqual(1)
   })
 
 
@@ -59,8 +60,8 @@ describe('HelloWorld.vue', () => {
     header.vm.$emit('add', tempStr)
     // REVIEW <学习> 检测 add 是不是已经被触发了
     expect(header.emitted('add')).toBeTruthy()
-    expect(todo.vm.$data.undoList.length).toEqual(1)
-    expect(todo.vm.$data.undoList[0]).toEqual(tempStr)
+    expect(todo.vm.undoList.length).toEqual(1)
+    expect(todo.vm.undoList[0]).toEqual(tempStr)
     // REVIEW <解决> undolist 里面的数据没有更新的情况
     //https://stackoverflow.com/questions/53781794/vue-test-utils-is-updating-the-component-data-but-not-re-rendering-the-dom
     await Vue.nextTick()
@@ -69,7 +70,7 @@ describe('HelloWorld.vue', () => {
   })
 
   it('当点击了 添加 / 删除 / done 的时候， undo, todo, 应该要有相应的变化', () => {
-    
+
   })
 
 

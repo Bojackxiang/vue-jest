@@ -1,7 +1,7 @@
 <template>
   <div class="item-wrapper">
     <div>
-      <p v-show="!showInput">
+      <p v-show="!showInput" @click="toggleInput">
         {{ todoItem }}
       </p>
       <input
