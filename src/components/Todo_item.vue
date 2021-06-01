@@ -1,15 +1,21 @@
 <template>
   <div class="item-wrapper">
     <div>
-      <p>
+      <p v-show="!showInput">
         {{ todoItem }}
       </p>
-      <input type="text" v-model="todoItemText" @keyup.enter="updateText" />
+      <input
+        class="todo-input"
+        type="text"
+        v-model="todoItemText"
+        @keyup.enter="updateText"
+        v-show="showInput"
+      />
     </div>
 
     <button class="delete-btn" @click="deleteTodo(id)">delete</button>
     <button class="done-btn" @click="finishTodo(id)">Done</button>
-    <button class="edit-btn" @click="edit()">Edit</button>
+    <button class="edit-btn" @click="toggleInput">Edit</button>
   </div>
 </template>
 
@@ -18,11 +24,12 @@ export default {
   props: {
     todoItem: String,
     id: Number,
-    updateTodo: Function
+    updateTodo: Function,
   },
   data() {
     return {
       todoItemText: this.todoItem,
+      showInput: false,
     };
   },
   methods: {
@@ -36,7 +43,11 @@ export default {
       // console.log(index);
     },
     updateText() {
-      this.$emit('updateTodo', this.id, this.todoItemText)
+      this.$emit("updateTodo", this.id, this.todoItemText);
+      this.toggleInput();
+    },
+    toggleInput() {
+      this.showInput = !this.showInput;
     },
   },
 };

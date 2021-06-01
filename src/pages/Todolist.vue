@@ -61,10 +61,9 @@ export default {
       console.log({ index, newText });
       switch (listName) {
         case "undo":
-          // this.undoList[index] = 'whatever';
-          // REVIEW <Vue> 如果要改变 list，不饿螚只改变一个，要整个 data 一起改变
-          // REVIEW <Vue> 这边可以回顾 javascript 的引用类型 和 值类型
-          const temp = [...this.undoList]; // 
+          // REVIEW <VUE> 如果要改变 list，不饿螚只改变一个，要整个 data 一起改变
+          // REVIEW <VUE> 这边可以回顾 javascript 的引用类型 和 值类型
+          const temp = [...this.undoList]; //
           temp[index] = newText;
           this.undoList = temp;
           break;
