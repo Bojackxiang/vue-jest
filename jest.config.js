@@ -6,5 +6,11 @@ module.exports = {
     '\.eslintrc\.js'
   ],
   collectCoverage: true,
-  collectCoverageFrom: ["**/*.{vue}"]
+  // REVIEW src下面的所有的 js / vue的文件
+  // ** 的意思是全部文件
+  collectCoverageFrom: [
+    "**/src/components/**/*.{js,vue}",
+    '"**/src/pages/**/*.{js,vue}"'
+  ],
+
 }
