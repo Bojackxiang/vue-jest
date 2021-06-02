@@ -12,25 +12,28 @@
       <button class="submit-btn" @click="submit">Submit</button>
     </div>
     <div class="auth-btns-group">
-      <el-button class="login" type="primary" @click="login"> {{username || 'whatever'}} </el-button>
+      <el-button class="login" type="primary" @click="login">
+        <span v-show="!isLoading">{{ username || "whatever" }}</span>
+        <span v-show="isLoading">loading</span></el-button
+      >
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "todo-header",
   props: ["add"],
   data() {
     return {
       inputValue: "",
+      isLoading: false,
     };
   },
   computed: {
-    username: function(){
-      return this.$store.state.username
-    }
+    username: function () {
+      return this.$store.state.username;
+    },
   },
   methods: {
     submit() {
@@ -39,8 +42,13 @@ export default {
         this.inputValue = "";
       }
     },
-    login() {
-      this.$store.dispatch('login', "user name");
+    async login() {
+      console.log(1);
+      this.isLoading = true
+      console.log(2);
+      await this.$store.dispatch("login", "user name");
+      console.log(3);
+      this.isLoading = false
     },
   },
 };

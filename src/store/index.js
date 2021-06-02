@@ -14,9 +14,10 @@ export const commit_login = 'login'
 export default new Vuex.Store({
   state: initialState,
   actions: {
-    login(ctx, username){
+    async login(ctx, username){
       console.log("ACTION")
-      ctx.commit(commit_login, username)
+      const req_username = await fakeRequest();
+      ctx.commit(commit_login, req_username)
     }
   },
   mutations: {
@@ -27,3 +28,12 @@ export default new Vuex.Store({
   }
 })
 
+
+const fakeRequest = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('alex')
+    }, 3000)
+  })
+  
+}
