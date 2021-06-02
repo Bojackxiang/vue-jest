@@ -76,5 +76,23 @@ describe('Undo List component', () => {
 
   })
 
+  it('should delete emitted successfully', () => {
+      const wrapper = shallowMount(UndoList);
+      wrapper.vm.deleteTodo(0);
+      expect(wrapper.emitted('delete')).toBeTruthy()
+  });
+
+  it('should done function working', () => {
+    const wrapper = shallowMount(UndoList);
+    wrapper.vm.done(0);
+    expect(wrapper.emitted('doneTodo')).toBeTruthy()
+  });
+
+  it('should trigger update successfully', () => {
+    const wrapper = shallowMount(UndoList);
+    wrapper.vm.updateTodo(0, 'hello');
+    expect(wrapper.emitted('updateText')).toBeTruthy()
+  });
+
 
 })

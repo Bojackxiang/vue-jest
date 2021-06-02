@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1622603469201" clover="3.2.0">
-  <project timestamp="1622603469201" name="All files">
-    <metrics statements="15" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="8" elements="29" coveredelements="22" complexity="0" loc="15" ncloc="15" packages="1" files="3" classes="3"/>
+<coverage generated="1622604085193" clover="3.2.0">
+  <project timestamp="1622604085193" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="11" elements="29" coveredelements="28" complexity="0" loc="15" ncloc="15" packages="1" files="3" classes="3"/>
     <file name="Todo_header.vue" path="/Users/weijiexiang/code/vue/vue-jest/src/components/Todo_header.vue">
       <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <line num="22" count="16" type="stmt"/>
@@ -19,12 +19,12 @@
       <line num="50" count="4" type="stmt"/>
     </file>
     <file name="UndoList.vue" path="/Users/weijiexiang/code/vue/vue-jest/src/components/UndoList.vue">
-      <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <line num="19" count="2" type="stmt"/>
-      <line num="35" count="0" type="stmt"/>
-      <line num="38" count="0" type="stmt"/>
-      <line num="41" count="0" type="stmt"/>
-      <line num="45" count="22" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="45" count="25" type="stmt"/>
     </file>
   </project>
 </coverage>
