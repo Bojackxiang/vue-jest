@@ -6,5 +6,5 @@ module.exports = {
     '\.eslintrc\.js'
   ],
   collectCoverage: true,
-  collectCoverageFrom: ["**/*.{js,vue}"]
+  collectCoverageFrom: ["**/*.{vue}"]
 }
