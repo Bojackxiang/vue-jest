@@ -43,12 +43,9 @@ export default {
       }
     },
     async login() {
-      console.log(1);
-      this.isLoading = true
-      console.log(2);
+      this.isLoading = true;
       await this.$store.dispatch("login", "user name");
-      console.log(3);
-      this.isLoading = false
+      this.isLoading = false;
     },
   },
 };

@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const initialState = {
   username: null,
   isLogin: false,
-  token: '', 
+  token: '',
 }
 
 export const commit_login = 'login'
@@ -14,14 +14,14 @@ export const commit_login = 'login'
 export default new Vuex.Store({
   state: initialState,
   actions: {
-    async login(ctx, username){
+    async login(ctx, username) {
       console.log("ACTION")
       const req_username = await fakeRequest();
       ctx.commit(commit_login, req_username)
     }
   },
   mutations: {
-    login (state, username) {
+    login(state, username) {
       console.log('MUTATION');
       state.username = username
     }
@@ -35,5 +35,5 @@ const fakeRequest = () => {
       resolve('alex')
     }, 3000)
   })
-  
+
 }
