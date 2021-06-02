@@ -12,7 +12,9 @@
       <button class="submit-btn" @click="submit">Submit</button>
     </div>
     <div class="auth-btns-group">
-      <el-button class="login" type="primary" @click="login">
+      <!-- NOTE:  下面的 login 相当于直接 调用 mutation 中的 login，username就是这边的 alex-->
+      <el-button class="login" type="primary" @click="() => login('alex')">
+        <!-- NOTE:  -->
         <span v-show="!isLoading">{{ username || "whatever" }}</span>
         <span v-show="isLoading">loading</span></el-button
       >
@@ -21,6 +23,10 @@
 </template>
 
 <script>
+import { LOGIN } from "../store/action_names";
+import { mapState } from "vuex";
+import { mapMutations } from "vuex";
+
 export default {
   name: "todo-header",
   props: ["add"],
@@ -30,10 +36,11 @@ export default {
       isLoading: false,
     };
   },
+  // REVIEW <Vuex> 使用 map state 来获取 store 里面的数据
   computed: {
-    username: function () {
-      return this.$store.state.username;
-    },
+    ...mapState({
+      username: (state) => state.username,
+    }),
   },
   methods: {
     submit() {
@@ -44,9 +51,13 @@ export default {
     },
     async login() {
       this.isLoading = true;
-      await this.$store.dispatch("login", "user name");
+      await this.$store.dispatch(LOGIN, "user name");
       this.isLoading = false;
     },
+    ...mapMutations({
+      // NOTE 这边 直接对表 mutations，不用 走 actions
+      login: "login",
+    }),
   },
 };
 </script>

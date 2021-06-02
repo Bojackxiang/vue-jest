@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1622604085193" clover="3.2.0">
-  <project timestamp="1622604085193" name="All files">
-    <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="11" elements="29" coveredelements="28" complexity="0" loc="15" ncloc="15" packages="1" files="3" classes="3"/>
+<coverage generated="1622633452832" clover="3.2.0">
+  <project timestamp="1622633452832" name="All files">
+    <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3" elements="16" coveredelements="12" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="Todo_header.vue" path="/Users/weijiexiang/code/vue/vue-jest/src/components/Todo_header.vue">
-      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <line num="22" count="16" type="stmt"/>
-      <line num="28" count="3" type="cond" truecount="2" falsecount="0"/>
-      <line num="29" count="2" type="stmt"/>
-      <line num="30" count="2" type="stmt"/>
-    </file>
-    <file name="Todo_item.vue" path="/Users/weijiexiang/code/vue/vue-jest/src/components/Todo_item.vue">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
-      <line num="30" count="15" type="stmt"/>
-      <line num="37" count="1" type="stmt"/>
-      <line num="40" count="1" type="stmt"/>
-      <line num="46" count="2" type="stmt"/>
-      <line num="47" count="2" type="stmt"/>
-      <line num="50" count="4" type="stmt"/>
-    </file>
-    <file name="UndoList.vue" path="/Users/weijiexiang/code/vue/vue-jest/src/components/UndoList.vue">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <line num="19" count="2" type="stmt"/>
-      <line num="35" count="1" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-      <line num="41" count="1" type="stmt"/>
-      <line num="45" count="25" type="stmt"/>
+      <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
+      <line num="26" count="2" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="34" count="17" type="stmt"/>
+      <line num="42" count="17" type="stmt"/>
+      <line num="47" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="2" type="stmt"/>
+      <line num="49" count="2" type="stmt"/>
+      <line num="53" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="55" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

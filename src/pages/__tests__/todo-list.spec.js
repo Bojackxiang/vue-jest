@@ -5,11 +5,15 @@ import Header from '../../components/Todo_header.vue'
 import UndoList from '../../components/UndoList.vue'
 import { findWrapperWidthComponentName } from '../../utils/testUtils'
 import TodoList from '../../pages/Todolist.vue'
+import store from '../../store'
+
 
 let wrapper = null
 describe('Todo Page', () => {
   beforeAll(() => {
-    wrapper = shallowMount(TodList)
+    wrapper = shallowMount(TodList, {
+      store
+    })
   })
 
   it('Tdo list 能够正常渲染', () => {
@@ -17,6 +21,7 @@ describe('Todo Page', () => {
   })
 
   it('undo list should be empty', () => {
+    const wrapper = mount(TodoList, {store})
     const undoList = wrapper.vm.undoList;
     expect(undoList).toEqual([])
   })
@@ -34,7 +39,7 @@ describe('Todo Page', () => {
 
   it('todo list 调用 undo list 里面的 delete 方法', () => {
     // REVIEW <学习> 获得父组件
-    const wrapper = shallowMount(TodList)
+    const wrapper = shallowMount(TodList, {store})
     // REVIEW  <学习> 更改父组件的里面的 data
     wrapper.vm.undoList = [1, 2]
     // REVIEW <学习> 获得父组件中的足组件
@@ -47,7 +52,7 @@ describe('Todo Page', () => {
   })
 
   it('当 input 里面的 方法被处罚的时候，undo  list 的 方法也应该能改', async () => {
-    const todo = mount(TodoList);
+    const todo = mount(TodoList, {store});
     const header = todo.findComponent(Header);
     const undoList = todo.findComponent(UndoList)
     expect(undoList).toBeTruthy();
@@ -72,7 +77,7 @@ describe('Todo Page', () => {
   })
 
   it('delete undo should work ', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.vm.$data.undoList = ["1"]
 
 
@@ -82,7 +87,7 @@ describe('Todo Page', () => {
   })
 
   it('delete done should work', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.vm.$data.finishedList = ["2"]
 
     wrapper.vm.deleteTodo(0, 'done')
@@ -90,7 +95,7 @@ describe('Todo Page', () => {
   })
 
   it('default should not change the length of todo and undo', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.vm.$data.undoList = ["1"]
     wrapper.vm.$data.finishedList = ["2"]
 
@@ -100,7 +105,7 @@ describe('Todo Page', () => {
   })
 
   it('Done todo should work', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.vm.$data.undoList = ["1"]
     wrapper.vm.$data.finishedList = []
     wrapper.vm.doneTodo(0)
@@ -109,7 +114,7 @@ describe('Todo Page', () => {
   })
 
   it('update text in undolist should work', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.undoList = ['1']
 
     wrapper.vm.updateTextOfTodo(0, 'hello', 'undo')
@@ -118,7 +123,7 @@ describe('Todo Page', () => {
   })
 
   it('update text in finished list should work', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     // REVIEW 调用属性
     wrapper.vm.$data.finishedList = ['1']
     // REVIEW 调用方法
@@ -127,7 +132,7 @@ describe('Todo Page', () => {
   })
 
   it('update text should do nothing in default', () => {
-    const wrapper = mount(TodoList);
+    const wrapper = mount(TodoList, {store});
     wrapper.vm.$data.finishedList = ['1']
     wrapper.vm.updateTextOfTodo(0, 'hello', '')
     expect(wrapper.vm.$data.finishedList).toEqual(['1'])
