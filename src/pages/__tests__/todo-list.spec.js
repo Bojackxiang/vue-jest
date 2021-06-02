@@ -119,7 +119,9 @@ describe('Todo Page', () => {
 
   it('update text in finished list should work', () => {
     const wrapper = mount(TodoList);
+    // REVIEW 调用属性
     wrapper.vm.$data.finishedList = ['1']
+    // REVIEW 调用方法
     wrapper.vm.updateTextOfTodo(0, 'hello', 'done')
     expect(wrapper.vm.$data.finishedList[0]).toEqual('hello')
   })
