@@ -7,7 +7,7 @@ import { findWrapperWidthComponentName } from '../../utils/testUtils'
 import TodoList from '../../pages/Todolist.vue'
 
 let wrapper = null
-describe('HelloWorld.vue', () => {
+describe('Todo Page', () => {
   beforeAll(() => {
     wrapper = shallowMount(TodList)
   })
@@ -46,8 +46,6 @@ describe('HelloWorld.vue', () => {
     expect(wrapper.vm.undoList.length).toEqual(1)
   })
 
-
-
   it('当 input 里面的 方法被处罚的时候，undo  list 的 方法也应该能改', async () => {
     const todo = mount(TodoList);
     const header = todo.findComponent(Header);
@@ -71,6 +69,66 @@ describe('HelloWorld.vue', () => {
 
   it('当点击了 添加 / 删除 / done 的时候， undo, todo, 应该要有相应的变化', () => {
 
+  })
+
+  it('delete undo should work ', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.undoList = ["1"]
+
+
+    wrapper.vm.deleteTodo(0, 'undo')
+    expect(wrapper.vm.$data.undoList.length).toEqual(0)
+
+  })
+
+  it('delete done should work', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.finishedList = ["2"]
+
+    wrapper.vm.deleteTodo(0, 'done')
+    expect(wrapper.vm.$data.finishedList.length).toEqual(0)
+  })
+
+  it('default should not change the length of todo and undo', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.undoList = ["1"]
+    wrapper.vm.$data.finishedList = ["2"]
+
+    wrapper.vm.deleteTodo(0, '')
+    expect(wrapper.vm.$data.finishedList.length).toEqual(1)
+    expect(wrapper.vm.$data.undoList.length).toEqual(1)
+  })
+
+  it('Done todo should work', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.undoList = ["1"]
+    wrapper.vm.$data.finishedList = []
+    wrapper.vm.doneTodo(0)
+
+    expect(wrapper.vm.$data.finishedList.length).toEqual(1)
+  })
+
+  it('update text in undolist should work', () => {
+    const wrapper = mount(TodoList);
+    wrapper.undoList = ['1']
+
+    wrapper.vm.updateTextOfTodo(0, 'hello', 'undo')
+
+    expect(wrapper.vm.$data.undoList[0]).toEqual('hello')
+  })
+
+  it('update text in finished list should work', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.finishedList = ['1']
+    wrapper.vm.updateTextOfTodo(0, 'hello', 'done')
+    expect(wrapper.vm.$data.finishedList[0]).toEqual('hello')
+  })
+
+  it('update text should do nothing in default', () => {
+    const wrapper = mount(TodoList);
+    wrapper.vm.$data.finishedList = ['1']
+    wrapper.vm.updateTextOfTodo(0, 'hello', '')
+    expect(wrapper.vm.$data.finishedList).toEqual(['1'])
   })
 
 

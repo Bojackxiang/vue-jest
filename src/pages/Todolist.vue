@@ -34,13 +34,6 @@ export default {
       finishedList: [],
     };
   },
-  watch: {
-    // REVIEW <VUE> 前面这个部分就像是 dependency
-    // REVIEW <VUE> 并且 这个 value 就是 dependency 的 value
-    undoList: function (val) {
-      console.log({ val });
-    },
-  },
   methods: {
     add(todo) {
       this.undoList = [...this.undoList, todo];
@@ -56,8 +49,6 @@ export default {
         default:
           return;
       }
-
-      this.undoList.indexOf();
     },
     doneTodo(index) {
       const item = this.undoList[index];
@@ -73,6 +64,7 @@ export default {
           const temp = [...this.undoList]; //
           temp[index] = newText;
           this.undoList = temp;
+          console.log(this.undoList);
           break;
         case "done":
           this.finishedList[index] = newText;
@@ -80,8 +72,6 @@ export default {
         default:
           break;
       }
-
-      console.log(this.undoList);
     },
   },
 };
