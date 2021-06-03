@@ -56,7 +56,6 @@ export default {
       this.undoList.splice(index, 1);
     },
     updateTextOfTodo(index, newText, listName) {
-      console.log({ index, newText });
       switch (listName) {
         case "undo":
           // REVIEW <VUE> 如果要改变 list，不饿螚只改变一个，要整个 data 一起改变
@@ -64,7 +63,6 @@ export default {
           const temp = [...this.undoList]; //
           temp[index] = newText;
           this.undoList = temp;
-          console.log(this.undoList);
           break;
         case "done":
           this.finishedList[index] = newText;

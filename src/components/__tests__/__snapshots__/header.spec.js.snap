@@ -4,8 +4,6 @@ exports[`Todo=header.vue the snapshot should be same 1`] = `
 <div class="wrapper">
   <h3 class="header-logo">Todo</h3>
   <div><input type="text" data-test="user-input" class="header-input"> <button class="submit-btn">Submit</button></div>
-  <div class="auth-btns-group">
-    <el-button type="primary" class="login"><span>whatever</span> <span style="display: none;">loading</span></el-button>
-  </div>
+  <div class="auth-btns-group"><button type="primary" class="login"><span>whatever</span></button></div>
 </div>
 `;

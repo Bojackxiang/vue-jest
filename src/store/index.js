@@ -21,7 +21,6 @@ export default new Vuex.Store({
   },
   mutations: {
     async login(state, username) {
-      console.log('MUTATION');
       state.username = username
     }
   }

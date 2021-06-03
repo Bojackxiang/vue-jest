@@ -1,12 +1,14 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount, mount,createLocalVue } from '@vue/test-utils'
 import Vue from 'vue'
 import TodList from '../Todolist.vue'
 import Header from '../../components/Todo_header.vue'
 import UndoList from '../../components/UndoList.vue'
-import { findWrapperWidthComponentName } from '../../utils/testUtils'
+import {solveElementUIIssue, findWrapperWidthComponentName } from '../../utils/testUtils'
 import TodoList from '../../pages/Todolist.vue'
 import store from '../../store'
 
+
+solveElementUIIssue()
 
 let wrapper = null
 describe('Todo Page', () => {

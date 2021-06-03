@@ -13,11 +13,10 @@
     </div>
     <div class="auth-btns-group">
       <!-- NOTE:  下面的 login 相当于直接 调用 mutation 中的 login，username就是这边的 alex-->
-      <el-button class="login" type="primary" @click="() => login('alex')">
+      <button class="login" type="primary" @click="() => login('alex')">
         <!-- NOTE:  -->
         <span v-show="!isLoading">{{ username || "whatever" }}</span>
-        <span v-show="isLoading">loading</span></el-button
-      >
+      </button>
     </div>
   </div>
 </template>
@@ -48,11 +47,6 @@ export default {
         this.$emit("add", this.inputValue);
         this.inputValue = "";
       }
-    },
-    async login() {
-      this.isLoading = true;
-      await this.$store.dispatch(LOGIN, "user name");
-      this.isLoading = false;
     },
     ...mapMutations({
       // NOTE 这边 直接对表 mutations，不用 走 actions
